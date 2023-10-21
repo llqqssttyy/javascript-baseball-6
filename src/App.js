@@ -1,32 +1,34 @@
 import { Console } from "@woowacourse/mission-utils";
-import { Computer } from "./Computer";
+import { Computer } from "./Computer.js";
+import { PlayerNumValCheck } from "./ValidationCheck.js";
 
 class App {
     // flag에 들어갈 값을 상수로 정의
-    #INITIATE_FLAG = 1;
+    #INITIAL_FLAG = 1;
     #TERMINATE_FLAG = 2;
 
     constructor() {
         this.computer;
-        this.flag = this.#INITIATE_FLAG;
+        this.flag = this.#INITIAL_FLAG;
     }
 
     async play() {
-        while (this.flag === this.#INITIATE_FLAG) {
-            this.initiateGame();
+        Console.print("숫자 야구 게임을 시작합니다.");
+        this.initiateGame();
 
-            this.flag = this.#TERMINATE_FLAG;
+        while (this.flag === this.#INITIAL_FLAG) {
+            const playerNum = PlayerNumValCheck(
+                await Console.readLineAsync("숫자를 입력해주세요 :")
+            );
+
+            this.flag = this.#INITIAL_FLAG;
         }
     }
 
     initiateGame() {
         this.computer = new Computer();
         this.computer?.generateRandNumStr();
-
-        Console.print("숫자 야구 게임을 시작합니다.");
     }
-
-    getUserNum() {}
 }
 
 export default App;
