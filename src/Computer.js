@@ -2,8 +2,8 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 
 export class Computer {
     constructor() {
-        this._randNumStr = "";
-        this._result = {
+        this.randNumStr = "";
+        this.result = {
             ball: 0,
             strike: 0,
             nothing: false,
