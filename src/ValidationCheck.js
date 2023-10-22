@@ -12,7 +12,7 @@ function isDuplicated(str) {
     }
 }
 
-export function ValidatePlayerNumber(playerNum) {
+export function validatePlayerNumber(playerNum) {
     const rangeRegex = new RegExp(/^[1-9]+$/);
 
     // throw error
@@ -24,7 +24,7 @@ export function ValidatePlayerNumber(playerNum) {
     else return playerNum;
 }
 
-export function ValidateFlag(flag) {
+export function validateFlag(flag) {
     const regex = new RegExp(/^[12]$/);
 
     if (!regex.test(flag)) throwError(`입력 가능한 문자는 1 또는 2입니다.`);

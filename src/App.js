@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import { Computer } from "./Computer.js";
-import { ValidateFlag, ValidatePlayerNumber } from "./ValidationCheck.js";
+import { validateFlag, validatePlayerNumber } from "./ValidationCheck.js";
 
 class App {
     #INITIATE_FLAG = "1";
@@ -17,7 +17,7 @@ class App {
 
         while (this.flag !== this.#TERMINATE_FLAG) {
             // 플레이어로부터 숫자 입력 받기
-            const playerNum = ValidatePlayerNumber(
+            const playerNum = validatePlayerNumber(
                 await Console.readLineAsync("숫자를 입력해주세요 :")
             );
 
@@ -38,7 +38,7 @@ class App {
     async gameClear() {
         console.log("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
 
-        this.flag = ValidateFlag(
+        this.flag = validateFlag(
             await Console.readLineAsync(
                 "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
             )
