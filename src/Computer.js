@@ -16,12 +16,13 @@ export class Computer {
         this.randNum = numbers.join("");
     }
 
+    // strike와 ball의 개수를 세어 object로 반환
     getCnt(playerNum) {
         let strike = 0;
         let ball = 0;
 
         // 힌트 카운트
-        playerNum.split("").map((num, idx) => {
+        playerNum.split("").forEach((num, idx) => {
             if (this.randNum[idx] === num) {
                 strike++;
             } else if (this.randNum.includes(num)) {
@@ -31,6 +32,7 @@ export class Computer {
         return { strike: strike, ball: ball };
     }
 
+    // getCnt의 반환값을 바탕으로 힌트 문구를 생성하여 반환
     getHint(playerNum) {
         const cnt = this.getCnt(playerNum);
 
