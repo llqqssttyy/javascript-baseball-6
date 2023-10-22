@@ -34,12 +34,12 @@ export class Computer {
 
     // getCnt의 반환값을 바탕으로 힌트 문구를 생성하여 반환
     getHint(playerNum) {
-        const cnt = this.getCnt(playerNum);
+        const { strike, ball } = this.getCnt(playerNum);
 
         // 힌트 반환
-        if (cnt.strike === 3) return "3스트라이크";
-        else if (cnt.ball === 3) return "3볼";
-        else if (cnt.strike === 0 && cnt.ball === 0) return "낫싱";
-        else return `${cnt.ball}볼 ${cnt.strike}스트라이크`;
+        if (strike === 3) return "3스트라이크";
+        else if (ball === 3) return "3볼";
+        else if (strike === 0 && ball === 0) return "낫싱";
+        else return `${ball}볼 ${strike}스트라이크`;
     }
 }
