@@ -13,7 +13,7 @@ class App {
 
     async play() {
         console.log("숫자 야구 게임을 시작합니다.");
-        this.initiateGame();
+        this.initializeGame();
 
         while (this.flag !== this.#TERMINATE_FLAG) {
             const playerNum = validatePlayerNumber(
@@ -24,19 +24,19 @@ class App {
             Console.print(hint);
 
             if (hint === "3스트라이크") {
-                await this.gameClear();
+                await this.handleGameClear();
             }
         }
     }
 
     // 게임 초기화
-    initiateGame() {
+    initializeGame() {
         this.computer = new Computer();
         this.computer?.generateRandNum();
     }
 
     // 게임 클리어 시 진행 여부를 입력받아 처리
-    async gameClear() {
+    async handleGameClear() {
         console.log("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         this.flag = validateFlag(
             await Console.readLineAsync(
@@ -47,7 +47,7 @@ class App {
         if (this.flag === this.#TERMINATE_FLAG) {
             return Console.print("게임 종료");
         }
-        this.initiateGame();
+        this.initializeGame();
     }
 }
 
