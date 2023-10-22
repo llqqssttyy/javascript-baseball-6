@@ -30,4 +30,14 @@ export class Computer {
         });
         return { strike: strike, ball: ball };
     }
+
+    getHint(playerNum) {
+        const cnt = this.getCnt(playerNum);
+
+        // 힌트 반환
+        if (cnt.strike === 3) return "3스트라이크";
+        else if (cnt.ball === 3) return "3볼";
+        else if (cnt.strike === 0 && cnt.ball === 0) return "낫싱";
+        else return `${cnt.ball}볼 ${cnt.strike}스트라이크`;
+    }
 }
