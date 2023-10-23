@@ -1,19 +1,19 @@
 import { Console } from "@woowacourse/mission-utils";
 import { Computer } from "./Computer.js";
 import { validateFlag, validatePlayerNumber } from "./ValidationCheck.js";
-import { flags } from "./constants/constants.js";
+import { FLAGS } from "./constants/constants.js";
 
 class App {
     constructor() {
         this.computer = new Computer();
-        this.flag = flags.INITIATE;
+        this.flag = FLAGS.INITIATE;
     }
 
     async play() {
         Console.print("숫자 야구 게임을 시작합니다.");
-        this.initializeGame();
+        this.init();
 
-        while (this.flag !== flags.TERMINATE) {
+        while (this.flag !== FLAGS.TERMINATE) {
             const playerNum = await this.getInputWithValidator(
                 "숫자를 입력해주세요 : ",
                 validatePlayerNumber
@@ -32,19 +32,19 @@ class App {
 
         const userInput = await this.getInputWithValidator("", validateFlag);
 
-        if (userInput === flags.TERMINATE) {
-            this.terminateGame();
+        if (userInput === FLAGS.TERMINATE) {
+            return this.terminate();
         }
-        this.initializeGame();
+        this.init();
     }
 
-    initializeGame() {
+    init() {
         this.computer?.generateRandNum();
     }
 
-    terminateGame() {
-        this.flag = userInput;
-        return Console.print("게임 종료");
+    terminate() {
+        this.flag = FLAGS.TERMINATE;
+        Console.print("게임 종료");
     }
 
     printGameClearMsg() {
