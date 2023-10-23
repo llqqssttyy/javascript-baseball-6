@@ -1,4 +1,4 @@
-import { MissionUtils } from "@woowacourse/mission-utils";
+import { Console, MissionUtils } from "@woowacourse/mission-utils";
 
 export class Computer {
     constructor() {
@@ -36,7 +36,6 @@ export class Computer {
         const { strike, ball } = this.getCnt(playerNum);
 
         const result = [];
-
         if (ball) {
             result.push(`${ball}볼`);
         }
@@ -44,6 +43,9 @@ export class Computer {
             result.push(`${strike}스트라이크`);
         }
 
-        return result.length > 0 ? result.join(" ") : "낫싱";
+        const hint = result.length > 0 ? result.join(" ") : "낫싱";
+        Console.print(hint);
+
+        return hint;
     }
 }
