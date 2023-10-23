@@ -1,4 +1,4 @@
-import { hasDuplicatedChar } from "./utilities/StringUtils";
+import { hasDuplicatedChar } from "./utilities/StringUtils.js";
 
 function throwError(message = "") {
     const ERR_PREFIX = "[ERROR]";
@@ -8,7 +8,6 @@ function throwError(message = "") {
 export function validatePlayerNumber(playerNum) {
     const rangeRegex = new RegExp(/^[1-9]+$/);
 
-    // throw error
     if (!rangeRegex.test(playerNum))
         throwError(`입력 값은 1부터 9까지의 숫자입니다.`);
     else if (playerNum.length !== 3)

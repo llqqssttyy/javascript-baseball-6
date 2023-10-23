@@ -5,6 +5,7 @@ export class Computer {
         this.randNum = "";
     }
 
+    // 랜덤한 세 자리 숫자 생성 및 저장
     generateRandNum() {
         const numbers = [];
         while (numbers.length < 3) {
@@ -23,12 +24,10 @@ export class Computer {
 
         // 힌트 카운트
         playerNum.split("").forEach((num, idx) => {
-            if (this.randNum[idx] === num) {
-                strike++;
-            } else if (this.randNum.includes(num)) {
-                ball++;
-            }
+            if (this.randNum[idx] === num) strike++;
+            else if (this.randNum.includes(num)) ball++;
         });
+
         return { strike: strike, ball: ball };
     }
 
