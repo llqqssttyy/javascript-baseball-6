@@ -1,15 +1,8 @@
-const ERR_PREFIX = "[ERROR]";
-function throwError(message) {
+import { hasDuplicatedChar } from "./utilities/StringUtils";
+
+function throwError(message = "") {
+    const ERR_PREFIX = "[ERROR]";
     throw new Error(`${ERR_PREFIX} ${message}`);
-}
-
-function isDuplicated(str) {
-    const charSet = new Set();
-
-    for (const char of str) {
-        if (charSet.has(char)) return true;
-        charSet.add(char);
-    }
 }
 
 export function validatePlayerNumber(playerNum) {
@@ -17,10 +10,10 @@ export function validatePlayerNumber(playerNum) {
 
     // throw error
     if (!rangeRegex.test(playerNum))
-        throwError(`입력 가능한 문자는 1부터 9까지의 숫자입니다.`);
+        throwError(`입력 값은 1부터 9까지의 숫자입니다.`);
     else if (playerNum.length !== 3)
         throwError(`입력 값은 세 자리 숫자입니다.`);
-    else if (isDuplicated(playerNum)) throwError(`중복된 숫자입니다.`);
+    else if (hasDuplicatedChar(playerNum)) throwError(`중복된 숫자입니다.`);
     else return playerNum;
 }
 

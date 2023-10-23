@@ -3,13 +3,13 @@ import { validateFlag, validatePlayerNumber } from "../src/ValidationCheck.js";
 describe("입력 유효성 검사", () => {
     it("범위 내 숫자가 아닌 다른 문자를 입력했을 때", () => {
         expect(() => validatePlayerNumber("abc")).toThrowError(
-            "[ERROR] 입력 가능한 문자는 1부터 9까지의 숫자입니다."
+            "[ERROR] 입력 값은 1부터 9까지의 숫자입니다."
         );
     });
 
     it("범위 내 숫자가 아닌 다른 문자를 입력했을 때", () => {
         expect(() => validatePlayerNumber("011")).toThrowError(
-            "[ERROR] 입력 가능한 문자는 1부터 9까지의 숫자입니다."
+            "[ERROR] 입력 값은 1부터 9까지의 숫자입니다."
         );
     });
 
