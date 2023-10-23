@@ -35,10 +35,15 @@ export class Computer {
     getHint(playerNum) {
         const { strike, ball } = this.getCnt(playerNum);
 
-        // 힌트 반환
-        if (strike === 3) return "3스트라이크";
-        else if (ball === 3) return "3볼";
-        else if (strike === 0 && ball === 0) return "낫싱";
-        else return `${ball}볼 ${strike}스트라이크`;
+        const result = [];
+
+        if (ball) {
+            result.push(`${ball}볼`);
+        }
+        if (strike) {
+            result.push(`${strike}스트라이크`);
+        }
+
+        return result.length > 0 ? result.join(" ") : "낫싱";
     }
 }

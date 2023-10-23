@@ -12,12 +12,12 @@ class App {
     }
 
     async play() {
-        console.log("숫자 야구 게임을 시작합니다.");
+        Console.print("숫자 야구 게임을 시작합니다.");
         this.initializeGame();
 
         while (this.flag !== this.#TERMINATE_FLAG) {
             const playerNum = validatePlayerNumber(
-                await Console.readLineAsync("숫자를 입력해주세요 :")
+                await Console.readLineAsync("숫자를 입력해주세요 : ")
             );
 
             const hint = this.computer.getHint(playerNum);
@@ -37,12 +37,9 @@ class App {
 
     // 게임 클리어 시 진행 여부를 입력받아 처리
     async handleGameClear() {
-        console.log("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        this.flag = validateFlag(
-            await Console.readLineAsync(
-                "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요."
-            )
-        );
+        Console.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        Console.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        this.flag = validateFlag(await Console.readLineAsync(""));
 
         if (this.flag === this.#TERMINATE_FLAG) {
             return Console.print("게임 종료");
