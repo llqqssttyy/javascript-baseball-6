@@ -1,8 +1,8 @@
-import { Console, MissionUtils } from "@woowacourse/mission-utils";
+import { Console, MissionUtils } from '@woowacourse/mission-utils';
 
 export class Computer {
   constructor() {
-    this.randNum = "";
+    this.randNum = '';
   }
 
   // 랜덤한 세 자리 숫자 생성 및 저장
@@ -14,7 +14,7 @@ export class Computer {
         numbers.push(number);
       }
     }
-    this.randNum = numbers.join("");
+    this.randNum = numbers.join('');
   }
 
   // strike와 ball의 개수를 세어 object로 반환
@@ -23,7 +23,7 @@ export class Computer {
     let ball = 0;
 
     // 힌트 카운트
-    playerNum.split("").forEach((num, idx) => {
+    playerNum.split('').forEach((num, idx) => {
       if (this.randNum[idx] === num) strike++;
       else if (this.randNum.includes(num)) ball++;
     });
@@ -43,7 +43,7 @@ export class Computer {
       result.push(`${strike}스트라이크`);
     }
 
-    const hint = result.length > 0 ? result.join(" ") : "낫싱";
+    const hint = result.length > 0 ? result.join(' ') : '낫싱';
     Console.print(hint);
 
     return hint;

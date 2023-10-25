@@ -1,7 +1,7 @@
-import { Console } from "@woowacourse/mission-utils";
-import { Computer } from "./Computer.js";
-import { validateFlag, validatePlayerNumber } from "./ValidationCheck.js";
-import { FLAGS } from "./constants/constants.js";
+import { Console } from '@woowacourse/mission-utils';
+import { Computer } from './Computer.js';
+import { validateFlag, validatePlayerNumber } from './ValidationCheck.js';
+import { FLAGS } from './constants/constants.js';
 
 class App {
   constructor() {
@@ -10,17 +10,17 @@ class App {
   }
 
   async play() {
-    Console.print("숫자 야구 게임을 시작합니다.");
+    Console.print('숫자 야구 게임을 시작합니다.');
     this.init();
 
     while (this.flag !== FLAGS.TERMINATE) {
       const playerNum = await this.getInputWithValidator(
-        "숫자를 입력해주세요 : ",
+        '숫자를 입력해주세요 : ',
         validatePlayerNumber
       );
 
       const hint = this.computer.getHint(playerNum);
-      if (hint === "3스트라이크") {
+      if (hint === '3스트라이크') {
         await this.handleGameClear();
       }
     }
@@ -30,7 +30,7 @@ class App {
   async handleGameClear() {
     this.printGameClearMsg();
 
-    const userInput = await this.getInputWithValidator("", validateFlag);
+    const userInput = await this.getInputWithValidator('', validateFlag);
 
     if (userInput === FLAGS.TERMINATE) {
       return this.terminate();
@@ -44,12 +44,12 @@ class App {
 
   terminate() {
     this.flag = FLAGS.TERMINATE;
-    Console.print("게임 종료");
+    Console.print('게임 종료');
   }
 
   printGameClearMsg() {
-    Console.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-    Console.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    Console.print('3개의 숫자를 모두 맞히셨습니다! 게임 종료');
+    Console.print('게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.');
   }
 
   async getInputWithValidator(msg, validator = (input) => input) {

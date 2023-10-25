@@ -1,4 +1,4 @@
 export const FLAGS = {
-  INITIATE: "1",
-  TERMINATE: "2",
+  INITIATE: '1',
+  TERMINATE: '2',
 };

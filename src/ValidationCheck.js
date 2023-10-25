@@ -1,7 +1,7 @@
-import { hasDuplicatedChar } from "./utilities/StringUtils.js";
+import { hasDuplicatedChar } from './utilities/StringUtils.js';
 
-function throwError(message = "") {
-  const ERR_PREFIX = "[ERROR]";
+function throwError(message = '') {
+  const ERR_PREFIX = '[ERROR]';
   throw new Error(`${ERR_PREFIX} ${message}`);
 }
 
