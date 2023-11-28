@@ -39,21 +39,14 @@ class Computer {
     };
 
     return {
-      ball: this.#countMatchedNumbers({
-        ...state,
-        isStrike: false,
-      }),
-      strike: this.#countMatchedNumbers({
-        ...state,
-        isStrike: true,
-      }),
+      ball: this.#countMatchedNumbers({ ...state, isStrike: false }),
+      strike: this.#countMatchedNumbers({ ...state, isStrike: true }),
     };
   }
 
   #countMatchedNumbers({ answer, playerNumbers, isStrike }) {
     return playerNumbers.reduce((cnt, number, index) => {
-      const isMatch =
-        answer.includes(number) && answer.indexOf(number) === index;
+      const isMatch = answer.includes(number) && answer.indexOf(number) === index;
 
       return cnt + (isMatch === isStrike);
     }, 0);

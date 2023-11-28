@@ -5,6 +5,10 @@ class OutputView {
   printStartMessage() {
     Console.print(OUTPUTS.startMsg);
   }
+
+  printHint(hint) {
+    Console.print(OUTPUTS.hintMsg(hint));
+  }
 }
 
 export default OutputView;

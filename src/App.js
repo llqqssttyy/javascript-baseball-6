@@ -26,6 +26,7 @@ class App {
       this.#computer.generateAnswer();
 
       this.#computer.playerNumbers = await this.#inputView.getNumbers();
+      this.#outputView.printHint(this.#computer.hint);
 
       break;
     }

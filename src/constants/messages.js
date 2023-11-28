@@ -6,13 +6,16 @@ export const INPUTS = Object.freeze({
 export const OUTPUTS = Object.freeze({
   startMsg: '숫자 야구 게임을 시작합니다.',
 
-  resultMsg({ ball, strike }) {
-    if (ball === 0 && strike === 0) return '낫싱\n';
+  hintMsg({ ball, strike }) {
+    const result = [];
 
-    return `${ball}볼 ${strike}스트라이크\n`;
+    if (ball) result.push(`${ball}볼`);
+    if (strike) result.push(`${strike}스트라이크`);
+
+    return result.length > 0 ? result.join(' ') : '낫싱';
   },
 
-  clearMsg: '3개의 숫자를 모두 맞히셨습니다! 게임 종료\n',
+  clearMsg: '3개의 숫자를 모두 맞히셨습니다! 게임 종료',
 });
 
 export const ERROR = Object.freeze({
