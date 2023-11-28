@@ -13,7 +13,7 @@ class Numbers {
   constructor(numbers) {
     this.#validate(numbers);
 
-    this.#numbers = numbers.split('');
+    this.#numbers = numbers.split('').map((num) => Number(num));
   }
 
   #validate(numbers) {

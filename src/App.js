@@ -18,12 +18,14 @@ class App {
   async play() {
     this.#outputView.printStartMessage();
 
+    await this.#playBullsAndCows();
+  }
+
+  async #playBullsAndCows() {
     while (true) {
       this.#computer.generateAnswer();
 
-      const numbers = await this.#inputView.getNumbers();
-      this.#computer.setPlayerNumbers(numbers);
-
+      this.#computer.playerNumbers = await this.#inputView.getNumbers();
       break;
     }
   }

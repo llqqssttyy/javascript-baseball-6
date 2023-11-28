@@ -24,14 +24,47 @@ class Computer {
     this.#answer.clear();
   }
 
-  setPlayerNumbers(numbers) {
+  set playerNumbers(numbers) {
     this.#playerNumbers = new Numbers(numbers);
   }
 
-  get hint() {}
-
   get isGameOver() {
     return this.hint.strike === 3;
+  }
+
+  get hint() {
+    const answer = [...this.#answer];
+    const playerNumbers = this.#playerNumbers.numbers;
+
+    return {
+      ball: this.#findBall(answer, playerNumbers),
+      strike: this.#findStrike(answer, playerNumbers),
+    };
+  }
+
+  #findBall(answer, playerNumbers) {
+    return playerNumbers.reduce((balls, number) => {
+      if (
+        answer.includes(number) &&
+        answer.indexOf(number) !== playerNumbers.indexOf(number)
+      ) {
+        return balls + 1;
+      }
+
+      return balls;
+    }, 0);
+  }
+
+  #findStrike(answer, playerNumbers) {
+    return playerNumbers.reduce((strikes, number) => {
+      if (
+        answer.includes(number) &&
+        answer.indexOf(number) === playerNumbers.indexOf(number)
+      )
+        return strikes + 1;
+
+      return strikes;
+    }, 0);
   }
 }
 
