@@ -13,6 +13,10 @@ class OutputView {
   printGameClear() {
     Console.print(OUTPUTS.clearMsg);
   }
+
+  printTerminate() {
+    Console.print(OUTPUTS.terminateMsg);
+  }
 }
 
 export default OutputView;

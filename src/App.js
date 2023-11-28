@@ -1,3 +1,4 @@
+import { FLAGS } from './constants/constants.js';
 import Computer from './domains/Computer.js';
 import InputView from './views/InputView.js';
 import OutputView from './views/OutputView.js';
@@ -18,10 +19,10 @@ class App {
   async play() {
     this.#outputView.printStartMessage();
 
-    await this.#playBullsAndCows();
+    await this.#playRound();
   }
 
-  async #playBullsAndCows() {
+  async #playRound() {
     this.#computer.generateAnswer();
 
     while (!this.#computer.isGameOver) {
@@ -29,7 +30,7 @@ class App {
       this.#outputView.printHint(this.#computer.hint);
     }
 
-    this.#handleGameClear();
+    await this.#handleGameClear();
   }
 
   async #handleGameClear() {
@@ -37,9 +38,12 @@ class App {
 
     const flag = Number(await this.#inputView.getFlag());
 
-    if (flag === 1) {
+    if (flag === FLAGS.continue) {
       this.#computer.clear();
-      this.#playBullsAndCows();
+      return await this.#playRound();
+    }
+    if (flag === FLAGS.terminate) {
+      this.#outputView.printTerminate();
     }
   }
 

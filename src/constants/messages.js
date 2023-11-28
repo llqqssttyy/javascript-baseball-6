@@ -16,6 +16,8 @@ export const OUTPUTS = Object.freeze({
   },
 
   clearMsg: '3개의 숫자를 모두 맞히셨습니다! 게임 종료',
+
+  terminateMsg: '게임 종료',
 });
 
 export const ERROR = Object.freeze({
