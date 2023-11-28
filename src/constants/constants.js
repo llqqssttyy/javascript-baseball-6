@@ -4,7 +4,4 @@ export const NUMBERS = Object.freeze({
   max: 9,
 });
 
-export const FLAGS = Object.freeze({
-  continue: 1,
-  terminate: 2,
-});
+export const TERMINATE_FLAG = 2;

@@ -15,3 +15,8 @@ export const hasDuplicatedNumbers = (str) => {
   const numbers = new Set(str.split(''));
   return numbers.size !== NUMBERS.maxCnt;
 };
+
+export const isValidFlag = (str) => {
+  const regex = new RegExp(/^[1|2]$/);
+  return regex.test(str);
+};

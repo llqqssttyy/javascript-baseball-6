@@ -1,7 +1,9 @@
-import { FLAGS } from './constants/constants.js';
 import Computer from './domains/Computer.js';
+
 import InputView from './views/InputView.js';
 import OutputView from './views/OutputView.js';
+
+import Flag from './domains/Flag.js';
 
 class App {
   #computer;
@@ -36,18 +38,15 @@ class App {
   async #handleGameClear() {
     this.#outputView.printGameClear();
 
-    const flag = Number(await this.#inputView.getFlag());
+    const flag = new Flag(await this.#inputView.getFlag());
 
-    if (flag === FLAGS.continue) {
-      this.#computer.clear();
-      return await this.#playRound();
+    if (flag.isTerminateFlag) {
+      return this.#outputView.printTerminate();
     }
-    if (flag === FLAGS.terminate) {
-      this.#outputView.printTerminate();
-    }
+
+    this.#computer.clear();
+    await this.#playRound();
   }
-
-  #validateFlag(flag) {}
 }
 
 export default App;

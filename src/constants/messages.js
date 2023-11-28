@@ -26,6 +26,8 @@ export const ERROR = Object.freeze({
   invalidNumbers: '유효하지 않은 숫자입니다.',
   invalidNumberOfDigits: '숫자 3개를 입력해 주세요.',
   duplicatedNumbers: '중복된 숫자는 입력할 수 없습니다.',
+
+  invalidFlag: '유효하지 않은 입력입니다. 1 또는 2를 입력해 주세요.',
 });
 
 export const NEW_LINE = '\n';
