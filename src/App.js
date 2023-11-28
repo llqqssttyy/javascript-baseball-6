@@ -21,7 +21,8 @@ class App {
     while (true) {
       this.#computer.generateAnswer();
 
-      const input = await this.#inputView.getNumbers();
+      const numbers = await this.#inputView.getNumbers();
+      this.#computer.setPlayerNumbers(numbers);
 
       break;
     }

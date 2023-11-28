@@ -15,4 +15,12 @@ export const OUTPUTS = Object.freeze({
   clearMsg: '3개의 숫자를 모두 맞히셨습니다! 게임 종료\n',
 });
 
+export const ERROR = Object.freeze({
+  prefix: '[ERROR]',
+
+  invalidNumbers: '유효하지 않은 숫자입니다.',
+  invalidNumberOfDigits: '숫자 3개를 입력해 주세요.',
+  duplicatedNumbers: '중복된 숫자는 입력할 수 없습니다.',
+});
+
 export const NEW_LINE = '\n';
