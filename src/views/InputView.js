@@ -10,6 +10,10 @@ class InputView {
   getNumbers() {
     return this.#getInput(INPUTS.getNumbers);
   }
+
+  getFlag() {
+    return this.#getInput(INPUTS.getFlag);
+  }
 }
 
 export default InputView;

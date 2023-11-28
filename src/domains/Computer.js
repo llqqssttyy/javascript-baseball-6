@@ -1,6 +1,6 @@
 import { MissionUtils } from '@woowacourse/mission-utils';
 import { NUMBERS } from '../constants/constants.js';
-import Numbers from '../domains/Numbers.js';
+import Numbers from './Numbers.js';
 
 class Computer {
   #answer;
@@ -20,7 +20,7 @@ class Computer {
     }
   }
 
-  clearAnswer() {
+  clear() {
     this.#answer.clear();
   }
 
@@ -29,7 +29,7 @@ class Computer {
   }
 
   get isGameOver() {
-    return this.hint.strike === 3;
+    return this.#playerNumbers && this.hint.strike === 3;
   }
 
   get hint() {
@@ -46,9 +46,10 @@ class Computer {
 
   #countMatchedNumbers({ answer, playerNumbers, isStrike }) {
     return playerNumbers.reduce((cnt, number, index) => {
-      const isMatch = answer.includes(number) && answer.indexOf(number) === index;
+      const hasNumber = answer.includes(number);
+      const isMatch = answer.indexOf(number) === index;
 
-      return cnt + (isMatch === isStrike);
+      return cnt + (hasNumber && isMatch === isStrike);
     }, 0);
   }
 }

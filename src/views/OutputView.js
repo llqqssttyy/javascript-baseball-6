@@ -9,6 +9,10 @@ class OutputView {
   printHint(hint) {
     Console.print(OUTPUTS.hintMsg(hint));
   }
+
+  printGameClear() {
+    Console.print(OUTPUTS.clearMsg);
+  }
 }
 
 export default OutputView;
