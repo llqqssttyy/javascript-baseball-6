@@ -33,37 +33,29 @@ class Computer {
   }
 
   get hint() {
-    const answer = [...this.#answer];
-    const playerNumbers = this.#playerNumbers.numbers;
+    const state = {
+      answer: [...this.#answer],
+      playerNumbers: this.#playerNumbers.numbers,
+    };
 
     return {
-      ball: this.#findBall(answer, playerNumbers),
-      strike: this.#findStrike(answer, playerNumbers),
+      ball: this.#countMatchedNumbers({
+        ...state,
+        isStrike: false,
+      }),
+      strike: this.#countMatchedNumbers({
+        ...state,
+        isStrike: true,
+      }),
     };
   }
 
-  #findBall(answer, playerNumbers) {
-    return playerNumbers.reduce((balls, number) => {
-      if (
-        answer.includes(number) &&
-        answer.indexOf(number) !== playerNumbers.indexOf(number)
-      ) {
-        return balls + 1;
-      }
+  #countMatchedNumbers({ answer, playerNumbers, isStrike }) {
+    return playerNumbers.reduce((cnt, number, index) => {
+      const isMatch =
+        answer.includes(number) && answer.indexOf(number) === index;
 
-      return balls;
-    }, 0);
-  }
-
-  #findStrike(answer, playerNumbers) {
-    return playerNumbers.reduce((strikes, number) => {
-      if (
-        answer.includes(number) &&
-        answer.indexOf(number) === playerNumbers.indexOf(number)
-      )
-        return strikes + 1;
-
-      return strikes;
+      return cnt + (isMatch === isStrike);
     }, 0);
   }
 }
