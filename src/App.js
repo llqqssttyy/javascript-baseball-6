@@ -20,6 +20,9 @@ class App {
 
     while (true) {
       this.#computer.generateAnswer();
+
+      const input = await this.#inputView.getNumbers();
+
       break;
     }
   }
